@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SideBarServiceService } from 'src/app/Services/side-bar-service.service';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+    
+  constructor(public sidebarService : SideBarServiceService) {
+   
+  }
 
   ngOnInit(): void {
   }
-
 }

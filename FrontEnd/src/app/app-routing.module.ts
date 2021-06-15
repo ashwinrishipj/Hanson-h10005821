@@ -3,7 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './Student/home/home.component';
 
-const routes: Routes = [{ path: '', component: LoginComponent,pathMatch:"full" }];
+const routes: Routes = [
+  { path: '', component: LoginComponent, pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

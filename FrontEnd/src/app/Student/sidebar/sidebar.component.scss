@@ -1,0 +1,16 @@
+.sidebar{
+    width: 20%;
+    color: rgb(217, 217, 217);
+}
+li {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: center;
+}
+
+li:hover{
+    transform: scale(1.5);
+    z-index: 2;
+}
+

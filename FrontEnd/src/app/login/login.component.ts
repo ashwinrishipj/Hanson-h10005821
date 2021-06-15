@@ -25,6 +25,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
   onLoginSubmit(){
-    this.router.navigate(['/home']);
+    this.router.navigate(['/home'],{skipLocationChange:true});
   }
 }
