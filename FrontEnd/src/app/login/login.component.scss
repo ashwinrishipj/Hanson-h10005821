@@ -29,6 +29,8 @@ form{
 .login-form{ 
 	width:330px;
 	margin:20px;
+	background-color:  #1b1b1b;
+	border: 1px solid blueviolet;
 }
 
 .sign-up{
@@ -71,6 +73,6 @@ input[type="color"]:focus,
 	box-shadow:0 0 8px red;
 }
 .fauser{
-	color: #0d6efd;
+	color: blueviolet;
 	font-size: larger;
 }

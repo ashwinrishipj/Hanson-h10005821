@@ -1,9 +1,8 @@
 <div class="container-fluid">
     <div class="row">
          <div class="col-lg-5" style="background-color: rgb(240, 109, 92); height: 100vh;">
-
          </div>
-         <div class="col-lg-7 " style="background-color: whitesmoke; height: 100vh;">
+         <div class="col-lg-7 " style="background-color:  #121212; height: 100vh;">
             <div class="global-container ">
                 <div class="card login-form">
                 <div class="card-body">
@@ -11,16 +10,27 @@
                         <fa-icon [icon]="faUser" class="fauser"></fa-icon>
                     </h3>
                     <div class="card-text">
-                        <form>
+                        <form [formGroup] ="loginForm">
                             <div class="form-group">
-                                <input type="email" class="form-control form-control-sm username" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <div class="form-floating mb-3 text-dark">
+                                    <input type="text" formControlName = "username" [ngClass] = "{'is-invalid':loginForm.controls.username.errors}" class="form-control" id="floatingInput" placeholder="h10002711">
+                                    <label for="floatingInput">username</label>
+                                    <div *ngIf="loginForm.controls.username.errors" class="invalid-feedback">
+                                        username is required
+                                    </div>
+                                  </div>
+                                
+                                  <div class="form-floating">
+                                    <input type="password" formControlName = "password" [ngClass] = "{'is-invalid':loginForm.controls.password.errors}"  class="form-control" id="floatingPassword" placeholder="Password">
+                                    <label for="floatingPassword">Password</label>
+                                    <div *ngIf="loginForm.controls.password.errors" class="invalid-feedback">
+                                       password must be alpha numeric
+                                    </div>
+                                  </div>
                             </div>
-                            <div class="form-group mt-4">
-                                <input type="password" class="form-control form-control-sm" id="exampleInputPassword1">
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                            <button type="submit" class="btn btn-info btn-block" [disabled] ="!loginForm.valid" (click)="onLoginSubmit()">Sign in</button>
                             
-                            <div class="sign-up">
+                            <div class="sign-up text-info">
                                 Don't have an account? <a href="#">Create One</a>
                             </div>
                         </form>
