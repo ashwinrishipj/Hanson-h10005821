@@ -11,7 +11,8 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 export class LoginComponent implements OnInit {
   faUser = faUser;
   loginForm: FormGroup;
-  unamePattern = "^[a-z0-9_-]{8,15}$";
+
+  unamePattern = "^[a-z0-9_-]{9,15}$";
   pwdPattern = "^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,12}$";
 
   constructor(private formBuilder: FormBuilder,private router: Router) {
