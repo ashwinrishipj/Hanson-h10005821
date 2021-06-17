@@ -9,8 +9,8 @@ li {
     text-align: center;
 }
 
-li:hover{
-    transform: scale(1.5);
+li:active{
+    transform: scale(1.2);
     z-index: 2;
 }
 

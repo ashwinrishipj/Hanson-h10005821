@@ -13,7 +13,7 @@
                         <form [formGroup] ="loginForm">
                             <div class="form-group">
                                 <div class="form-floating mb-3 text-dark">
-                                    <input type="text" formControlName = "username" [ngClass] = "{'is-invalid':loginForm.controls.username.errors}" class="form-control" id="floatingInput" placeholder="h10002711">
+                                    <input type="text" required formControlName = "username" [ngClass] = "{'is-invalid':loginForm.controls.username.errors}" class="form-control" id="floatingInput" placeholder="h10002711">
                                     <label for="floatingInput">username</label>
                                     <div *ngIf="loginForm.controls.username.errors" class="invalid-feedback">
                                         username is required
@@ -21,7 +21,7 @@
                                   </div>
                                 
                                   <div class="form-floating">
-                                    <input type="password" formControlName = "password" [ngClass] = "{'is-invalid':loginForm.controls.password.errors}"  class="form-control" id="floatingPassword" placeholder="Password">
+                                    <input type="password" required formControlName = "password" [ngClass] = "{'is-invalid':loginForm.controls.password.errors}"  class="form-control" id="floatingPassword" placeholder="Password">
                                     <label for="floatingPassword">Password</label>
                                     <div *ngIf="loginForm.controls.password.errors" class="invalid-feedback">
                                        password must be alpha numeric

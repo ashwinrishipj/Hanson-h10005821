@@ -30,7 +30,7 @@ import { SettingsComponent } from './Student/settings/settings.component';
     AppRoutingModule,
     FontAwesomeModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   providers: [SideBarServiceService],
   bootstrap: [AppComponent],
