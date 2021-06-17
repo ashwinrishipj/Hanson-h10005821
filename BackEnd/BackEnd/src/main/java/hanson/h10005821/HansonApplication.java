@@ -1,12 +1,11 @@
-package com.hanson.h10005821.BackEnd;
+package hanson.h10005821;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BackEndApplication {
-
+public class HansonApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(BackEndApplication.class, args);
+		SpringApplication.run(HansonApplication.class, args);
 	}
 }
