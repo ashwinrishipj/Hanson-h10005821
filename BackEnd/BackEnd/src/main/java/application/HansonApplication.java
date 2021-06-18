@@ -1,4 +1,4 @@
-package hanson.h10005821;
+package application;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
