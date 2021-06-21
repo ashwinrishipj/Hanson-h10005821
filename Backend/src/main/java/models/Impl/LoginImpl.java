@@ -1,5 +1,7 @@
 package models.Impl;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
 import exceptions.ArgumentChecker;
 import exceptions.Validator;
 import models.Login;
@@ -15,6 +17,7 @@ import models.LoginBuilder;
  * 
  * @author H10005821
  */
+@EntityScan
 public class LoginImpl implements Login {
 	private final String emailId;
 	private final String password;
@@ -33,7 +36,7 @@ public class LoginImpl implements Login {
 	public String getPassword() {
 		return password;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
