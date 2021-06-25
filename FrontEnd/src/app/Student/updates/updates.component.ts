@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SideBarServiceService } from 'src/app/Services/side-bar-service.service';
 
 @Component({
   selector: 'app-updates',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdatesComponent implements OnInit {
 
-  constructor() { }
+  constructor(public sidebarService : SideBarServiceService) { 
+    console.log("from services:",sidebarService.apiResponse);
+  }
 
   ngOnInit(): void {
   }

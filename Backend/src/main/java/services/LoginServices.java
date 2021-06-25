@@ -1,24 +1,31 @@
 package services;
 
+import java.util.Map;
+
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import models.Login;
 
 public class LoginServices {
 
-	public static boolean validateCredentials(Login loginValues) {
-		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+	static UserRole userRole;
 
-		dataSource.setUrl("jdbc:mysql://localhost:3306/hanson_application");
-		dataSource.setUsername("root");
-		dataSource.setPassword("hanson");
+	public static String validateCredentials(Login loginValues) {
+		JdbcTemplate jdbcTemplate;
 
-		JdbcTemplate jtm = new JdbcTemplate(dataSource);
-		int result = jtm.queryForObject("SELECT * FROM hanson_users", Integer.class);
-		System.out.println("result:" + result);
-		return false;
+		jdbcTemplate = DataSource.intializeDataSource();
+
+		@SuppressWarnings("deprecation")
+		int value = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM hanson_users where hanson_username=?",
+				new Object[] { loginValues.getEmailId() }, Integer.class);
+
+		if (value == 1) {
+			int passwordValue = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM hanson_users where hanson_password=?",
+					new Object[] { loginValues.getPassword() }, Integer.class);
+
+			return passwordValue == 1 ? UserRole.fetchUserDetails(passwordValue) : "incorrect password";
+		} else {
+			return "user not found. Please register";
+		}
 	}
-
 }

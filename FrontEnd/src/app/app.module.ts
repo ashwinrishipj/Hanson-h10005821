@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -13,6 +13,7 @@ import { SideBarServiceService } from './Services/side-bar-service.service';
 import { UpdatesComponent } from './Student/updates/updates.component';
 import { CoursesComponent } from './Student/courses/courses.component';
 import { SettingsComponent } from './Student/settings/settings.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -28,9 +29,11 @@ import { SettingsComponent } from './Student/settings/settings.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CommonModule,
     FontAwesomeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [SideBarServiceService],
   bootstrap: [AppComponent],
