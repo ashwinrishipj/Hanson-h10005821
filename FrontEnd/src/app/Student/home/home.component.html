@@ -1,31 +1,30 @@
-<div class="container home-background">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-2">
-        <app-sidebar></app-sidebar>
-      </div>
-      <div class="col-lg-6">
-        <p class="text-info">{{ sidebarService.feedStatus }}</p>
-        <div [ngSwitch]="sidebarService.feedStatus">
-          <div *ngSwitchCase="'updates'">
-            <app-updates></app-updates>
-          </div>
-          <div *ngSwitchCase="'courses'">
-            <app-courses></app-courses>
-          </div>
-          <div *ngSwitchCase="'notifications'">
-            <app-notifications></app-notifications>
-          </div>
-          <div *ngSwitchCase="'settings'">
-            <app-settings></app-settings>
-          </div>
-          <div *ngSwitchCase="'logout'">fsj</div>
-          <div *ngSwitchDefadivt></div>
+<div class="container-fluid home-background">
+  <div class="row">
+    <div class="col-lg-2">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-lg-6">
+      <div class="row text-info">{{ sidebarService.feedStatus }}</div>
+      <div [ngSwitch]="sidebarService.feedStatus">
+        <div *ngSwitchCase="'updates'">
+          <app-updates></app-updates>
         </div>
+        <div *ngSwitchCase="'courses'">
+          <app-courses></app-courses>
+        </div>
+        <div *ngSwitchCase="'notifications'">
+          <app-notifications></app-notifications>
+        </div>
+        <div *ngSwitchCase="'settings'">
+          <app-settings></app-settings>
+        </div>
+        <div *ngSwitchCase="'logout'">fsj</div>
+        <div *ngSwitchDefadivt></div>
       </div>
-      <div class="col-lg-4">
-        <app-notifications></app-notifications>
-      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="row">{{ sidebarService.feedStatus }}</div>
+      <app-notifications></app-notifications>
     </div>
   </div>
 </div>

@@ -41,6 +41,10 @@ export class LoginComponent implements OnInit {
     AOS.init();
   }
 
+  errorDismiss() {
+    this.iserror = false;
+  }
+
   onLoginSubmit() {
     const headers = {
       'content-type': 'application/json',
@@ -59,21 +63,25 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (data) => {
           console.log(data);
-          this.router.navigate(['/home'], { skipLocationChange: true });
+          if (data !== 1 || 0) {
+            this.sidebar.apiResponse = data;
+            console.log('services:', this.sidebar.apiResponse);
+            this.router.navigate(['/home'], { skipLocationChange: true });
+          } else if (data == 0) {
+            this.iserror = true;
+            this.apiError = 'user not found. please register';
+          } else if (data == 1) {
+            this.iserror = true;
+            this.apiError = 'incorrect password';
+          } else {
+            this.iserror = true;
+            this.apiError = 'server error!. Please try again later.';
+          }
         },
         (err) => {
           console.log('error value:', err);
-
-          if (
-            err.error.text === 'incorrect password' ||
-            err.error.text === 'user not found. Please register'
-          ) {
-            this.iserror = true;
-            this.apiError = err.error.text;
-          } else {
-            this.sidebar.apiResponse = err.error.text;
-            this.router.navigate(['/home'], { skipLocationChange: true });
-          }
+          this.iserror = true;
+          this.apiError = 'server error!. Please try again later.';
         }
       );
   }

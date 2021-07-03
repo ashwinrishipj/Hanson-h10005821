@@ -1,47 +1,48 @@
 .card-center {
-	margin: 0 auto; /* Added */
-	float: none; /* Added */
-	margin-bottom: 10px; /* Added */
+  margin: 0 auto; /* Added */
+  float: none; /* Added */
+  margin-bottom: 10px; /* Added */
 }
 
-.global-container{
-	height:100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: transparent;
+.global-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
 }
 
-form{
-	padding-top: 10px;
-	font-size: 14px;
-	margin-top: 30px;
+form {
+  padding-top: 10px;
+  font-size: 14px;
+  margin-top: 30px;
 }
 
-.card-title{ font-weight:300; }
-
-.btn{
-	font-size: 14px;
-	margin-top:20px;
+.card-title {
+  font-weight: 300;
 }
 
-
-.login-form{ 
-	width:330px;
-	margin:20px;
-	background-color:  #1b1b1b;
-	border: 1px solid blueviolet;
+.btn {
+  font-size: 14px;
+  margin-top: 20px;
 }
 
-.sign-up{
-	text-align:center;
-	padding:20px 0 0;
+.login-form {
+  width: 330px;
+  margin: 20px;
+  background-color: #1b1b1b;
+  border: 1px solid blueviolet;
 }
 
-.alert{
-	margin-bottom:-30px;
-	font-size: 13px;
-	margin-top:20px;
+.sign-up {
+  text-align: center;
+  padding: 20px 0 0;
+}
+
+.alert {
+  margin-bottom: -30px;
+  font-size: 13px;
+  margin-top: 20px;
 }
 
 textarea:focus,
@@ -59,20 +60,25 @@ input[type="url"]:focus,
 input[type="search"]:focus,
 input[type="tel"]:focus,
 input[type="color"]:focus,
-.uneditable-input:focus {   
+.uneditable-input:focus {
   border-color: none;
-  box-shadow:none;
+  box-shadow: none;
   outline: 0 none;
 }
 
-.box-validated{
-	 box-shadow:0 0 8px rgba(126, 239, 104, 0.6);
+.box-validated {
+  box-shadow: 0 0 8px rgba(126, 239, 104, 0.6);
 }
 
-.box-error{
-	box-shadow:0 0 8px red;
+.box-error {
+  box-shadow: 0 0 8px red;
 }
-.fauser{
-	color: blueviolet;
-	font-size: larger;
+.fauser {
+  color: blueviolet;
+  font-size: larger;
+}
+
+.button :focus {
+  outline: none;
+  box-shadow: none;
 }

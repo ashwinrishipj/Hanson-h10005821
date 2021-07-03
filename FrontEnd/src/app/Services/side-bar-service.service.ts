@@ -5,6 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class SideBarServiceService {
   public feedStatus: String = 'updates';
-  public apiResponse : String= "";
+  public apiResponse: any;
   constructor() {}
 }

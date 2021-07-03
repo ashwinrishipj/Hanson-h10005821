@@ -2,7 +2,7 @@ package com.example.Backend;
 
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,8 +24,9 @@ public class MyController {
 		return "home page";
 	}
 
+	@SuppressWarnings("unchecked")
 	@RequestMapping("/validate")
-	public String validateCredentials(@RequestBody Map<String, Object> userData) {
+	public <T> ResponseEntity<T> validateCredentials(@RequestBody Map<String, Object> userData) {
 		loginDetails = new LoginImpl.Builder().emailId(userData.get("emailId").toString())
 				.password(userData.get("password").toString()).build();
 
