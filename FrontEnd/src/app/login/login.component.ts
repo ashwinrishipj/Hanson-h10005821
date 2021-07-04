@@ -6,7 +6,6 @@ import {
   faUser,
 } from '@fortawesome/free-solid-svg-icons';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import * as AOS from 'aos';
 import { SideBarServiceService } from '../Services/side-bar-service.service';
 
 @Component({
@@ -38,7 +37,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    AOS.init();
   }
 
   errorDismiss() {

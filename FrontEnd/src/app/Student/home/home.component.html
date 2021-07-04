@@ -1,11 +1,25 @@
 <div class="container-fluid home-background">
   <div class="row">
     <div class="col-lg-2">
+      <nav class="navbar navbar-light bg-dark">
+        <div class="navbar-brand">
+        </div>
+      </nav>
+    </div>
+    <div class="col-lg-6 status-border">
+      <div class="text-info position-static menu-status">{{ sidebarService.feedStatus }}</div>
+    </div>
+    <div class="col-lg-4">
+      <input type="text" placeholder="search" />
+      <fa-icon class="ml-2 text-info position-absolute" [icon]="faSearch" type="submit" class="faSearch"></fa-icon>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2">
       <app-sidebar></app-sidebar>
     </div>
-    <div class="col-lg-6">
-      <div class="row text-info">{{ sidebarService.feedStatus }}</div>
-      <div [ngSwitch]="sidebarService.feedStatus">
+    <div class="col-lg-6 content-border">
+      <div [ngSwitch]="sidebarService.feedStatus" >
         <div *ngSwitchCase="'updates'">
           <app-updates></app-updates>
         </div>
@@ -22,8 +36,7 @@
         <div *ngSwitchDefadivt></div>
       </div>
     </div>
-    <div class="col-lg-4">
-      <div class="row">{{ sidebarService.feedStatus }}</div>
+    <div class="col-lg-4 border-left">
       <app-notifications></app-notifications>
     </div>
   </div>

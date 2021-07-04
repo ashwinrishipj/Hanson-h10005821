@@ -1,22 +1,20 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-5" style="background-color: rgb(240, 109, 92); height: 100vh;">
-            <p data-aos="fade-right" class="global-container text-white" data-aos-duration="3000">
+            <p class="global-container text-white">
                 Welcom to Hanson Application. Login to Acess the portal.
             </p>
         </div>
         <div class="col-lg-7 " style="background-color:  #121212; height: 100vh;">
             <div class="global-container ">
-                <div class="card login-form" data-aos="zoom-in" data-aos-duration="3000">
+                <div class="card login-form">
                     <div class="card-body">
                         <h3 class="card-title text-center">
                             <fa-icon [icon]="faUser" class="fauser"></fa-icon>
                         </h3>
                         <div class="card-text">
                             <div *ngIf="iserror">
-                                <div class="alert alert-danger alert-dismissible fade show" data-aos="fade-left"
-                                    data-aos-anchor="#example-anchor" data-aos-offset="500" data-aos-duration="500"
-                                    data-bs-autohide="true" role="alert">
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                     <fa-icon [icon]="faError" class="faError"></fa-icon>{{ apiError }}!
                                     <button type="button" class="btn-close" (click)="errorDismiss()"
                                         data-bs-dismiss="alert" aria-label="Close"></button>

@@ -22,7 +22,7 @@ public class MyController {
 	@GetMapping("/test")
 	public String home() {
 		return "home page";
-	}
+	}	
 
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/validate")
