@@ -13,7 +13,8 @@ import { SideBarServiceService } from './Services/side-bar-service.service';
 import { UpdatesComponent } from './Student/updates/updates.component';
 import { CoursesComponent } from './Student/courses/courses.component';
 import { SettingsComponent } from './Student/settings/settings.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgClass } from '@angular/common';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { CommonModule } from '@angular/common';
     UpdatesComponent,
     CoursesComponent,
     SettingsComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

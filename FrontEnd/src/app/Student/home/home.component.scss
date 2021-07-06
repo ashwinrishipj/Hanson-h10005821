@@ -1,5 +1,6 @@
 .home-background {
   background-color: #1b1b1b;
+  min-height: 100vh !important;
 }
 .fixed {
   position: fixed !important;
@@ -21,4 +22,9 @@ input {
 }
 .status-border {
   border: 0 0.5px 0.5px 0.5px solid #d9d9d9 !important;
+}
+
+.border-bottom{
+  border: none;
+  border-bottom: 0.5px solid #d9d9d9 !important;
 }

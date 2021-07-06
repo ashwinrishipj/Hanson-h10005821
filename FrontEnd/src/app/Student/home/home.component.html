@@ -1,25 +1,17 @@
-<div class="container-fluid home-background">
-  <div class="row">
-    <div class="col-lg-2">
-      <nav class="navbar navbar-light bg-dark">
-        <div class="navbar-brand">
-        </div>
-      </nav>
-    </div>
-    <div class="col-lg-6 status-border">
-      <div class="text-info position-static menu-status">{{ sidebarService.feedStatus }}</div>
-    </div>
-    <div class="col-lg-4">
-      <input type="text" placeholder="search" />
-      <fa-icon class="ml-2 text-info position-absolute" [icon]="faSearch" type="submit" class="faSearch"></fa-icon>
-    </div>
-  </div>
+<div class="fixed-top ">
+  <app-header></app-header>
+</div>
+<div class="container-fluid home-background mt-4">
   <div class="row">
     <div class="col-lg-2">
       <app-sidebar></app-sidebar>
     </div>
     <div class="col-lg-6 content-border">
-      <div [ngSwitch]="sidebarService.feedStatus" >
+      <div class="row text-info">
+        {{sidebarService.feedStatus}}
+        <span class="border-bottom mt-2"> </span>
+      </div>
+      <div [ngSwitch]="sidebarService.feedStatus">
         <div *ngSwitchCase="'updates'">
           <app-updates></app-updates>
         </div>

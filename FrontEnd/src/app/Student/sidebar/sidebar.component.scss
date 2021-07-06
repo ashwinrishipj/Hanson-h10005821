@@ -1,20 +1,29 @@
-.sidebar{
-    width: 20%;
-    color: rgb(217, 217, 217);
+.sidebar {
+  width: 20%;
+  color: rgb(217, 217, 217);
 }
 li {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  text-align: center;
 }
 
-li:active{
-    transform: scale(1.2);
-    z-index: 2;
+li:hover {
+  transform: scale(1.2);
+  z-index: 2;
+}
+
+li:active {
+  color: aqua;
+  z-index: 2;
+  transform: scale(1.2);
+}
+
+.fixed {
+  position: fixed !important;
 }
 
 .sticky{
-    position: sticky !important;
-    
+position: sticky !important;
 }
