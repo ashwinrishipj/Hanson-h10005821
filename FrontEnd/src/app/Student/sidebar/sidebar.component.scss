@@ -1,6 +1,10 @@
 .sidebar {
   width: 20%;
   color: rgb(217, 217, 217);
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 li {
   display: flex;
@@ -22,8 +26,9 @@ li:active {
 
 .fixed {
   position: fixed !important;
+  margin-top: 10% !important;
 }
 
-.sticky{
-position: sticky !important;
+.sticky {
+  position: sticky !important;
 }

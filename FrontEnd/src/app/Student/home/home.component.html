@@ -1,35 +1,37 @@
-<div class="fixed-top ">
-  <app-header></app-header>
-</div>
-<div class="container-fluid home-background mt-4">
-  <div class="row">
-    <div class="col-lg-2">
-      <app-sidebar></app-sidebar>
-    </div>
-    <div class="col-lg-6 content-border">
-      <div class="row text-info">
-        {{sidebarService.feedStatus}}
-        <span class="border-bottom mt-2"> </span>
+<app-header></app-header>
+<div class="home-background">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-2">
+        <app-sidebar></app-sidebar>
       </div>
-      <div [ngSwitch]="sidebarService.feedStatus">
-        <div *ngSwitchCase="'updates'">
-          <app-updates></app-updates>
+      <div class="col-lg-6 height content-border">
+        <div class="text-info">
+          <button class="btn btn-outline-info btn-sm disabled">
+            {{sidebarService.feedStatus}}
+          </button>
+          <span class="border-bottom mt-2"> </span>
         </div>
-        <div *ngSwitchCase="'courses'">
-          <app-courses></app-courses>
+        <div [ngSwitch]="sidebarService.feedStatus">
+          <div *ngSwitchCase="'updates'">
+            <app-updates></app-updates>
+          </div>
+          <div *ngSwitchCase="'courses'">
+            <app-courses></app-courses>
+          </div>
+          <div *ngSwitchCase="'notifications'">
+            <app-notifications></app-notifications>
+          </div>
+          <div *ngSwitchCase="'settings'">
+            <app-settings></app-settings>
+          </div>
+          <div *ngSwitchCase="'logout'">fsj</div>
+          <div *ngSwitchDefadivt></div>
         </div>
-        <div *ngSwitchCase="'notifications'">
-          <app-notifications></app-notifications>
-        </div>
-        <div *ngSwitchCase="'settings'">
-          <app-settings></app-settings>
-        </div>
-        <div *ngSwitchCase="'logout'">fsj</div>
-        <div *ngSwitchDefadivt></div>
       </div>
-    </div>
-    <div class="col-lg-4 border-left">
-      <app-notifications></app-notifications>
+      <div class="col-lg-4 border-left">
+        <app-notifications></app-notifications>
+      </div>
     </div>
   </div>
 </div>
