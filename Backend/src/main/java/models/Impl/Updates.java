@@ -1,6 +1,6 @@
 package models.Impl;
 
-public class UserRole {
+public class Updates {
 
 	private final int hansonPostId;
 	private final String hansonPostContent;
@@ -10,7 +10,7 @@ public class UserRole {
 	private final String hansonUserName;
 	private final String hansonUserEmail;
 
-	public UserRole(Builder builder) {
+	public Updates(Builder builder) {
 		this.hansonPostId = builder.hansonPostId;
 		this.hansonPostContent = builder.hansonPostContent;
 		this.hansonPostlikes = builder.hansonPostlikes;
@@ -100,8 +100,8 @@ public class UserRole {
 			return this;
 		}
 
-		public UserRole Build() {
-			return new UserRole(this);
+		public Updates Build() {
+			return new Updates(this);
 		}
 	}
 

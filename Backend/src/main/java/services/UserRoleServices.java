@@ -4,29 +4,31 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import models.Impl.UserRole;
+import models.Impl.Courses;
+import models.Impl.Notifications;
+import models.Impl.Updates;
 
 public class UserRoleServices {
-	private static UserRole userRole;
-	private static List<UserRole> userRoleList = new ArrayList<UserRole>();
-
-	public static UserRole mapRow(Map<String, Object> posts) throws SQLException {
-		return userRole = UserRole.Builder.newInstance().setHansonPostId((int) posts.get("hanson_post_id"))
-				.setHansonPostContent(posts.get("hanson_post_content").toString())
-				.setHansonPostlikes((int) posts.get("hanson_post_likes"))
-				.setHansonPostDate(posts.get("hanson_post_createdDate").toString())
-				.setHansonId((int) posts.get("hanson_id"))
-				.setHansonUserName(posts.get("hanson_userDetails_name").toString())
-				.setHansonUserEmail(posts.get("hanson_userDetails_email").toString()).Build();
-	}
-
 	public static ResponseEntity fetchUserDetails(int id) {
+		List<Object> userRoleList = new ArrayList<>();
+		Executor executor = Executors.newFixedThreadPool(3);
 		JdbcTemplate jdbcTemplate;
+		Future<Updates> futureUpdates;
+		Future<Notifications> futureNotifications;
+		Future<Courses> futureCourses;
+
+		Updates updates;
+		Notifications notifications;
+		Courses courses;
 
 		jdbcTemplate = DataSource.intializeDataSource();
 		String sql = "select * from hanson_postDetails as h1 join hanson_userDetails as h2 where h1.hanson_id = h2.hanson_id and h1.hanson_id = ?";
@@ -34,15 +36,22 @@ public class UserRoleServices {
 
 		for (Map<String, Object> posts : postDetails) {
 			try {
-				userRole = UserRoleServices.mapRow(posts);
-			} catch (SQLException e) {
+				futureUpdates = ((ExecutorService) executor).submit(() -> UpdatesServices.mapRow(posts));
+				futureNotifications = ((ExecutorService) executor).submit(() -> NotificationServices.mapRow(posts));
+				futureCourses = ((ExecutorService) executor).submit(() -> CourseServices.mapRow(posts));
+
+				updates = futureUpdates.get();
+				notifications = futureNotifications.get();
+				courses = futureCourses.get();
+
+				userRoleList.add(updates);
+				userRoleList.add(notifications);
+				userRoleList.add(courses);
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			userRoleList.add(userRole);
 		}
 
-		return ResponseEntity
-	            .status(HttpStatus.CREATED)                 
-	            .body(userRoleList);
+		return ResponseEntity.status(HttpStatus.CREATED).body(userRoleList);
 	}
 }
