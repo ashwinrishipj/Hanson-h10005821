@@ -6,7 +6,7 @@ public class Notifications {
 	private final List<OverDue> overDue;
 	private final List<Upcoming> upcoming;
 
-	public Notifications(Builder builder) {
+	private Notifications(Builder builder) {
 		super();
 		this.overDue = builder.overDue;
 		this.upcoming = builder.upcoming;

@@ -1,16 +1,18 @@
 package models.Impl;
 
+import java.sql.Date;
+
 public class Updates {
 
 	private final int hansonPostId;
 	private final String hansonPostContent;
 	private final int hansonPostlikes;
-	private final String hansonPostDate;
+	private final Date hansonPostDate;
 	private final int hansonId;
 	private final String hansonUserName;
 	private final String hansonUserEmail;
 
-	public Updates(Builder builder) {
+	private Updates(Builder builder) {
 		this.hansonPostId = builder.hansonPostId;
 		this.hansonPostContent = builder.hansonPostContent;
 		this.hansonPostlikes = builder.hansonPostlikes;
@@ -32,7 +34,7 @@ public class Updates {
 		return hansonPostlikes;
 	}
 
-	public String getHansonPostDate() {
+	public Date getHansonPostDate() {
 		return hansonPostDate;
 	}
 
@@ -52,7 +54,7 @@ public class Updates {
 		private int hansonPostId;
 		private String hansonPostContent;
 		private int hansonPostlikes;
-		private String hansonPostDate;
+		private Date hansonPostDate;
 		private int hansonId;
 		private String hansonUserName;
 		private String hansonUserEmail;
@@ -80,8 +82,8 @@ public class Updates {
 			return this;
 		}
 
-		public Builder setHansonPostDate(String hansonPostDate) {
-			this.hansonPostDate = hansonPostDate;
+		public Builder setHansonPostDate(Date date) {
+			this.hansonPostDate = date;
 			return this;
 		}
 

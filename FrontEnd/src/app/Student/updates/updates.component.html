@@ -1,13 +1,13 @@
 <div class="body">
-    <div *ngFor="let posts of updates; let index = index">
+    <div *ngFor="let posts of update; let index = index">
         <div class="card mt-4" data-aos="zoom-in" aos-duration="3000">
-            <div class="card-header">(1)
-                {{index}}
+            <div class="card-header">
+                {{posts.hansonUserName}}
             </div>
             <div class="card-body ">
-                <h5 class="card-title">hanson_post_createdDate</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <h5 class="card-title"> {{posts.hansonPostDate}}</h5>
+                <p class="card-text"> {{posts.hansonPostContent}}</p>
+                <a href="#" class="btn btn-primary"> {{posts.hansonPostlikes}}</a>
             </div>
         </div>
     </div>

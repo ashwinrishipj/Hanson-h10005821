@@ -8,10 +8,10 @@ import * as AOS from 'aos';
   styleUrls: ['./updates.component.scss'],
 })
 export class UpdatesComponent implements OnInit {
-  updates: any[] = [];
+  update: any[] = [];
 
   constructor(public sidebarService: SideBarServiceService) {
-    this.updates = this.sidebarService.apiResponse;
+    this.update = this.sidebarService.apiResponse.updates;
   }
 
   ngOnInit(): void {

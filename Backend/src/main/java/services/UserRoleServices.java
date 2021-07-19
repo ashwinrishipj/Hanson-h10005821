@@ -16,42 +16,43 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import models.Impl.Courses;
 import models.Impl.Notifications;
 import models.Impl.Updates;
+import models.Impl.UserRole;
 
 public class UserRoleServices {
 	public static ResponseEntity fetchUserDetails(int id) {
-		List<Object> userRoleList = new ArrayList<>();
+		UpdatesServices updatesServices = new UpdatesServices();
+		CourseServices courseServices = new CourseServices();
+		NotificationServices notificationServices = new NotificationServices();
+
 		Executor executor = Executors.newFixedThreadPool(3);
 		JdbcTemplate jdbcTemplate;
-		Future<Updates> futureUpdates;
-		Future<Notifications> futureNotifications;
-		Future<Courses> futureCourses;
 
-		Updates updates;
-		Notifications notifications;
-		Courses courses;
+		List<Updates> updates = null;
+		Notifications notifications = null;
+		List<Courses> courses = null;
 
 		jdbcTemplate = DataSource.intializeDataSource();
-		String sql = "select * from hanson_postDetails as h1 join hanson_userDetails as h2 where h1.hanson_id = h2.hanson_id and h1.hanson_id = ?";
-		List<Map<String, Object>> postDetails = jdbcTemplate.queryForList(sql, new Object[] { id });
+		String postsSql = "select * from hanson_postDetails as h1 join hanson_userDetails as h2 where h1.hanson_id = h2.hanson_id and h1.hanson_id = ?";
+		List<Map<String, Object>> updateDetails = jdbcTemplate.queryForList(postsSql, new Object[] { id });
 
-		for (Map<String, Object> posts : postDetails) {
-			try {
-				futureUpdates = ((ExecutorService) executor).submit(() -> UpdatesServices.mapRow(posts));
-				futureNotifications = ((ExecutorService) executor).submit(() -> NotificationServices.mapRow(posts));
-				futureCourses = ((ExecutorService) executor).submit(() -> CourseServices.mapRow(posts));
+		String notificationsSql = "select * from hanson_tutors,notifications as h1 join hanson_userDetails as h2 where h1.hanson_userDetails_id = h2.hanson_userDetails_id and h1.hanson_userDetails_id = ?";
+		List<Map<String, Object>> notificationResults = jdbcTemplate.queryForList(notificationsSql,
+				new Object[] { id });
 
-				updates = futureUpdates.get();
-				notifications = futureNotifications.get();
-				courses = futureCourses.get();
+		String coursesSql = "select * from hanson_tutors,hanson_courses as h1 join hanson_userDetails h2 where h1.hanson_userDetails_id = h2.hanson_userDetails_id and h1.hanson_userDetails_id = ?";
+		List<Map<String, Object>> coursesResult = jdbcTemplate.queryForList(coursesSql, new Object[] { id });
 
-				userRoleList.add(updates);
-				userRoleList.add(notifications);
-				userRoleList.add(courses);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		try {
+			updates = updatesServices.fetchData(updateDetails);
+			courses = courseServices.fetchData(coursesResult);
+			notifications = notificationServices.fetchData(notificationResults);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		
+		UserRole userRole = UserRole.Builder.newInstance().setCourses(courses).setNotifications(notifications)
+				.setUpdates(updates).Build();
 
-		return ResponseEntity.status(HttpStatus.CREATED).body(userRoleList);
+		return ResponseEntity.status(HttpStatus.CREATED).body(userRole);
 	}
 }

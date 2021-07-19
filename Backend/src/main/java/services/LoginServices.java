@@ -27,10 +27,11 @@ public class LoginServices {
 
 		if (value == 1) {
 			@SuppressWarnings("deprecation")
-			int passwordValue = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM hanson_users where hanson_password=?",
+			int userID = jdbcTemplate.queryForObject("SELECT hanson_id FROM hanson_users where hanson_password=?",
 					new Object[] { loginValues.getPassword() }, Integer.class);
-
-			return passwordValue == 1 ? UserRoleServices.fetchUserDetails(passwordValue)
+			
+			System.out.println("userId:" + userID);
+			return userID >= 0 ? UserRoleServices.fetchUserDetails(userID)
 					: ResponseEntity.status(HttpStatus.OK).body("1");
 		} else {
 			return ResponseEntity.status(HttpStatus.OK).body("0");

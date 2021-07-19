@@ -1,14 +1,16 @@
 package models.Impl;
 
+import java.sql.Date;
+
 public class OverDue {
 	private final int notificationId;
 	private final String notificationContent;
 	private final String notificationSubject;
-	private final String notificationDate;
+	private final Date notificationDate;
 	private final int tutorId;
 	private final String tutorName;
 
-	public OverDue(Builder builder) {
+	private OverDue(Builder builder) {
 		this.notificationId = builder.notificationId;
 		this.notificationContent = builder.notificationContent;
 		this.notificationSubject = builder.notificationSubject;
@@ -29,7 +31,7 @@ public class OverDue {
 		return notificationSubject;
 	}
 
-	public String getNotificationDate() {
+	public Date getNotificationDate() {
 		return notificationDate;
 	}
 
@@ -45,7 +47,7 @@ public class OverDue {
 		private int notificationId;
 		private String notificationContent;
 		private String notificationSubject;
-		private String notificationDate;
+		private Date notificationDate;
 		private int tutorId;
 		private String tutorName;
 
@@ -72,8 +74,8 @@ public class OverDue {
 			return this;
 		}
 
-		public Builder setNotificationDate(String notificationDate) {
-			this.notificationDate = notificationDate;
+		public Builder setNotificationDate(Date date) {
+			this.notificationDate = date;
 			return this;
 		}
 

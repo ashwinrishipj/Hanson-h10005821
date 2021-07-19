@@ -6,13 +6,15 @@ public class Courses {
 	public final int courseCredits;
 	public final int courseTutorId;
 	public final String courseTutorName;
+	public final String courseTutorEmail;
 
-	public Courses(Builder builder) {
+	private Courses(Builder builder) {
 		this.courseId = builder.courseId;
 		this.courseName = builder.courseName;
 		this.courseCredits = builder.courseCredits;
 		this.courseTutorId = builder.courseTutorId;
 		this.courseTutorName = builder.courseTutorName;
+		this.courseTutorEmail = builder.courseTutorEmail;
 	}
 
 	public int getCourseId() {
@@ -41,12 +43,13 @@ public class Courses {
 		private int courseCredits;
 		private int courseTutorId;
 		private String courseTutorName;
+		private String courseTutorEmail;
 
 		private Builder() {
 
 		}
 
-		public Builder newInstance() {
+		public static Builder newInstance() {
 			return new Builder();
 		}
 
@@ -72,6 +75,11 @@ public class Courses {
 
 		public Builder setCourseTutorName(String courseTutorName) {
 			this.courseTutorName = courseTutorName;
+			return this;
+		}
+
+		public Builder setCourseTutorMailId(String courseTutorEmailId) {
+			this.courseTutorEmail = courseTutorEmailId;
 			return this;
 		}
 

@@ -1,16 +1,18 @@
 package models.Impl;
 
+import java.sql.Date;
+
 public class Upcoming {
 
 	private final int notificationId;
 	private final String notificationType;
 	private final String notificationContent;
 	private final String notificationSubject;
-	private final String notificationDate;
+	private final Date notificationDate;
 	private final int tutorId;
 	private final String tutorName;
 
-	public Upcoming(Builder builder) {
+	private Upcoming(Builder builder) {
 		this.notificationId = builder.notificationId;
 		this.notificationType = builder.notificationType;
 		this.notificationContent = builder.notificationContent;
@@ -36,7 +38,7 @@ public class Upcoming {
 		return notificationSubject;
 	}
 
-	public String getNotificationDate() {
+	public Date getNotificationDate() {
 		return notificationDate;
 	}
 
@@ -53,7 +55,7 @@ public class Upcoming {
 		private String notificationType;
 		private String notificationContent;
 		private String notificationSubject;
-		private String notificationDate;
+		private Date notificationDate;
 		private int tutorId;
 		private String tutorName;
 
@@ -85,8 +87,8 @@ public class Upcoming {
 			return this;
 		}
 
-		public Builder setNotificationDate(String notificationDate) {
-			this.notificationDate = notificationDate;
+		public Builder setNotificationDate(Date date) {
+			this.notificationDate = date;
 			return this;
 		}
 
