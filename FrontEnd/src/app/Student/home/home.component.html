@@ -1,11 +1,14 @@
+<app-modal-notification></app-modal-notification>
+
 <app-header></app-header>
-<div class="home-background">
+<div
+  [ngClass]="{'home-background': sidebarService.triggerNotificationModal == 'none', 'blurred': sidebarService.triggerNotificationModal == 'block'}">
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-1">
         <app-sidebar></app-sidebar>
       </div>
-      <div class="col-lg-8 height content-border">
+      <div class="col-lg-7 height content-border">
         <div class="text-info">
           <button class="btn btn-outline-info btn-sm disabled">
             {{sidebarService.feedStatus}}
@@ -29,7 +32,7 @@
           <div *ngSwitchDefadivt></div>
         </div>
       </div>
-      <div class="col-lg-3 border-left">
+      <div class="col-lg-4 border-left">
         <app-notifications></app-notifications>
       </div>
     </div>

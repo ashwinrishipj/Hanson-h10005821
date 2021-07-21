@@ -6,25 +6,15 @@
   <div class="row">
     <div class="card-body round bg-dark" data-aos="fade-left">
       <h5 class="card-title border-bottom text-danger">OverDue</h5>
-      <div *ngFor="let posts of overdue; let index = index">
-        <ul class="list-group">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingThree">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                {{posts.notificationContent}}
-              </button>
-            </h2>
-            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-                <strong>{{posts.notificationSubject}}</strong> Date: {{posts.notificationDate}}
-              </div>
-            </div>
+      <div *ngFor="let posts of overdue; let i = index">
+        <div class="mt-2 card  upcoming-bg">
+          <div class="card-header text-white align-items-start">
+            {{i+1}}. {{posts.notificationDate | date:'fullDate'}} - {{posts.notificationSubject}}
           </div>
-          <!-- <li class="list-group-item d-flex justify-content-between align-items-center">
-           {{posts.notificationContent}}
-            <span class="badge bg-primary rounded-pill">{{posts.notificationType}}</span>
-          </li> -->
-          </ul>
+          <a class="card-body text-center textBlack pointer" (click)="triggerModal(overdue[i])">
+            <fa-icon [icon]="faHome" class="faHome"></fa-icon> {{posts.notificationContent}}
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -32,13 +22,22 @@
   <div class="row mt-2">
     <div class="card-body bg-dark" data-aos="fade-left">
       <h5 class="card-title border-bottom text-success">upcoming</h5>
-      <div *ngFor="let posts of upcoming; let index = index">
-        <ul class="list-group">
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-           {{posts.notificationContent}}
-            <span class="badge bg-primary rounded-pill">{{posts.notificationType}}</span>
-          </li>
-          </ul>
+      <div *ngFor="let posts of upcoming; let i = index">
+        <div class="mt-2 card  upcoming-bg">
+          <div class="card-header text-white align-items-start">
+            {{i+1}}. {{posts.notificationDate | date:'fullDate'}} - {{posts.notificationSubject}}
+          </div>
+          <a class="card-body text-start textBlack pointer" (click)="triggerModal(upcoming[i])">
+            <div *ngIf="posts.notificationType == 'submission' ; else hanson">
+              <fa-icon [icon]="faHome" class="faHome"></fa-icon>
+            </div>
+            <ng-template #hanson>
+              <fa-icon [icon]="faPod" class="faPod"></fa-icon>
+            </ng-template>
+            {{posts.notificationContent | slice:0:30}}
+            <span ng-show="posts.hansonPostContent.length > 20">...</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>

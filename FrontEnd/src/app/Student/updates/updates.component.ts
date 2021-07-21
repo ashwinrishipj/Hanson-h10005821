@@ -17,4 +17,6 @@ export class UpdatesComponent implements OnInit {
   ngOnInit(): void {
     AOS.init();
   }
+
+  
 }

@@ -1,14 +1,14 @@
 <div class="body">
-    <div *ngFor="let posts of update; let index = index">
-        <div class="card mt-4" data-aos="zoom-in" aos-duration="3000">
-            <div class="card-header">
-                {{posts.hansonUserName}}
-            </div>
-            <div class="card-body ">
-                <h5 class="card-title"> {{posts.hansonPostDate}}</h5>
-                <p class="card-text"> {{posts.hansonPostContent}}</p>
-                <a href="#" class="btn btn-primary"> {{posts.hansonPostlikes}}</a>
-            </div>
-        </div>
+  <div *ngFor="let posts of update; let index = index">
+    <div class="card card-bg mt-4" data-aos="zoom-in" aos-duration="2000+index+100">
+      <div class="card-header fw-bolder text-red">
+        {{posts.hansonUserName}}
+        <span class="fw-bolder text-end">{{posts.hansonPostDate }}</span>
+      </div>
+      <div class="card-body textBlack">
+        <p class="card-text"> {{posts.hansonPostContent}} </p>
+        <a href="#" class="btn btn-primary"> {{posts.hansonPostlikes}}</a>
+      </div>
     </div>
+  </div>
 </div>

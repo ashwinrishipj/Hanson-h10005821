@@ -15,6 +15,8 @@ import { CoursesComponent } from './Student/courses/courses.component';
 import { SettingsComponent } from './Student/settings/settings.component';
 import { CommonModule, NgClass } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
+import { ModalNotificationComponent } from './modal-notification/modal-notification.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { HeaderComponent } from './header/header.component';
     CoursesComponent,
     SettingsComponent,
     HeaderComponent,
+    ModalNotificationComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import { HeaderComponent } from './header/header.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    NgbModule,
   ],
   providers: [SideBarServiceService],
   bootstrap: [AppComponent],

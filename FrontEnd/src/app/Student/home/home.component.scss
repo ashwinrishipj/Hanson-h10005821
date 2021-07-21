@@ -5,6 +5,21 @@
 .fixed {
   position: fixed !important;
 }
+
+.blurred {
+  filter: blur(1.5px);
+  -webkit-filter: blur(1.5px);
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #1b1b1b !important;
+  min-height: 100vh !important;
+}
 input {
   background-color: #1b1b1b;
   color: whitesmoke;
@@ -24,11 +39,11 @@ input {
   border: 0 0.5px 0.5px 0.5px solid #d9d9d9 !important;
 }
 
-.border-bottom{
+.border-bottom {
   border: none;
   border-bottom: 0.5px solid #d9d9d9 !important;
 }
-.height{
+.height {
   min-height: 100vh !important;
 }
 // .margin-top{
