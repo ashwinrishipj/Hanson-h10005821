@@ -17,6 +17,7 @@ import { CommonModule, NgClass } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { ModalNotificationComponent } from './modal-notification/modal-notification.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CourseMaterialComponent } from './course-material/course-material.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SettingsComponent,
     HeaderComponent,
     ModalNotificationComponent,
+    CourseMaterialComponent,
   ],
   imports: [
     BrowserModule,
