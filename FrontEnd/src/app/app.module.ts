@@ -18,6 +18,7 @@ import { HeaderComponent } from './header/header.component';
 import { ModalNotificationComponent } from './modal-notification/modal-notification.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CourseMaterialComponent } from './course-material/course-material.component';
+import { CourseModalComponent } from './course-modal/course-modal.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { CourseMaterialComponent } from './course-material/course-material.compo
     HeaderComponent,
     ModalNotificationComponent,
     CourseMaterialComponent,
+    CourseModalComponent,
   ],
   imports: [
     BrowserModule,

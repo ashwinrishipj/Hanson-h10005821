@@ -7,7 +7,18 @@ import { SideBarServiceService } from 'src/app/Services/side-bar-service.service
   styleUrls: ['./courses.component.scss'],
 })
 export class CoursesComponent implements OnInit {
-  constructor(public sideBarService: SideBarServiceService) {}
+  overdue: any[] = [];
+  courseUpcoming: any[] = [];
 
-  ngOnInit(): void {}
+  constructor(public sideBarService: SideBarServiceService) {
+    this.overdue = this.sideBarService.apiResponse.notifications.overDue;
+    this.courseUpcoming = this.sideBarService.apiResponse.notifications.upcoming;
+  }
+
+  ngOnInit(): void { }
+
+  triggerModal(data: any) {
+    this.sideBarService.triggerCourseModal = 'block';
+    this.sideBarService.courseModal = this.sideBarService.apiResponse.courses[data];
+  }
 }

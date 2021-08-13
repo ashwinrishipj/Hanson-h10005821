@@ -7,7 +7,12 @@ import { SideBarServiceService } from '../Services/side-bar-service.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(public sidebarService: SideBarServiceService) {}
+  constructor(public sidebarService: SideBarServiceService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
+
+  updateMainView(type: string) {
+    this.sidebarService.feedStatus = type;
+  }
+
 }

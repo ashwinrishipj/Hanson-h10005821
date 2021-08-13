@@ -6,11 +6,13 @@ public class UserRole {
 	private final List<Updates> updates;
 	private final Notifications notifications;
 	private final List<Courses> courses;
-
+	private int userId;
+	
 	private UserRole(Builder builder) {
 		this.notifications = builder.notifications;
 		this.updates = builder.updates;
 		this.courses = builder.courses;
+		this.userId = builder.userId;
 	}
 
 	public List<Updates> getUpdates() {
@@ -24,11 +26,16 @@ public class UserRole {
 	public Notifications getNotifications() {
 		return notifications;
 	}
-
+	
+	public int getUserId() {
+		return userId;
+	}
+	
 	public static class Builder {
 		private List<Updates> updates;
 		private List<Courses> courses;
 		private Notifications notifications;
+		private int userId;
 
 		private Builder() {
 
@@ -45,6 +52,11 @@ public class UserRole {
 
 		public Builder setCourses(List<Courses> courses) {
 			this.courses = courses;
+			return this;
+		}
+		
+		public Builder setUserId(int userId) {
+			this.userId = userId;
 			return this;
 		}
 

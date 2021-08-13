@@ -1,6 +1,7 @@
-create database hanson_application;
 
 use hanson_application;
+
+select * from hanson_userdetails;
 
 create table hanson_role(
     hanson_user_role_id int not null auto_increment primary key,
@@ -28,3 +29,6 @@ insert into hanson_users values
 
 select * from hanson_users as h1 , hanson_role as h2
 where h1.hanson_user_role_id = h2.hanson_user_role_id;
+
+ALTER TABLE hanson_userdetails
+ADD zip varchar(8);

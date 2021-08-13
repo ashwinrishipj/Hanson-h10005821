@@ -56,6 +56,7 @@ alter table notifications add constraint fk_tutor_id foreign key (tutor_id) refe
 
 desc notifications;
 
+insert into notifications values(7,"php final thesis",'2021-07-08','submission','Php',1,1);
 select * from notifications;
 
 create table hanson_courses(
@@ -72,9 +73,9 @@ desc hanson_courses;
 
 desc hanson_postdetails;
 
+select * from hanson_postdetails;
 insert into hanson_postdetails values
-(5,"Hello Students,
-However, there will be a waiting period while another student is being tutored.",2,2,2,'2021-07-31');
+(7,"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem",1,1,1,'2021-07-31');
 
 select * from hanson_courses;
 

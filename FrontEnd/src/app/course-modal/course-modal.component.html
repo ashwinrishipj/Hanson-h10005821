@@ -1,0 +1,78 @@
+<div class="modal" data-aos="zoom-in" aos-duration="3000" tabindex="-1" role="dialog"
+    [ngStyle]="{'display':sidebarService.triggerCourseModal}">
+
+    <div class="modal-dialog modal-lg bg-dark " role="document">
+        <div class="modal-content bg-black">
+            <div class="modal-header">
+                <h5 class="modal-title text-danger"> {{sidebarService.courseModal.notificationSubject}}</h5>
+                <button (click)="onCloseHandled()" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex">
+                    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
+                        <li ngbNavItem="top">
+                            <a ngbNavLink>Submission:</a>
+                            <ng-template ngbNavContent>
+                                <div class="text-white mx-auto text-center">
+                                    <div class="form-group text-center">
+                                        <p class="modal-title"> {{sidebarService.courseModal.courseId}}
+                                        </p>
+                                        <h5 class="mt-4">{{sidebarService.courseModal.courseName}} -
+                                            {{sidebarService.courseModal.courseCredits}}</h5>
+                                        <br />
+                                        by:
+                                        <br />
+                                        <p> {{sidebarService.courseModal.courseTutorName}} @
+                                            {{sidebarService.courseModal.courseTutorEmail}}
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </li>
+                        <li ngbNavItem="middle">
+                            <a ngbNavLink>Curiculum</a>
+                            <ng-template ngbNavContent>
+                                <app-course-material></app-course-material>
+                            </ng-template>
+                        </li>
+                        <li ngbNavItem="bottom">
+                            <a ngbNavLink>Grades</a>
+                            <ng-template ngbNavContent>
+                                <table class="table text-white">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Week of Exam</th>
+                                            <th scope="col">theory</th>
+                                            <th scope="col">practical</th>
+                                            <th scope="col">total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let mark of marks; let i = index">
+                                            <th scope="row">{{ i + 1 }}</th>
+                                            <td>{{mark.name}}</td>
+                                            <td>
+                                                {{mark.theory}}
+                                            </td>
+                                            <td>{{mark.practical}}</td>
+                                            <td>{{mark.total}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </ng-template>
+                        </li>
+                    </ul>
+
+                    <div [ngbNavOutlet]="nav" class="ml-4"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="onCloseHandled()"
+                    data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

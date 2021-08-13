@@ -7,6 +7,7 @@ export class SideBarServiceService {
   public feedStatus: string = 'updates';
   public apiResponse: any;
   public triggerNotificationModal: string = 'none';
+
   public modalContent: any = {
     notificationId: null,
     notificationType: 'null',
@@ -17,5 +18,15 @@ export class SideBarServiceService {
     tutorName: 'null',
   };
 
-  constructor() {}
+  public courseModal: any = {
+    courseId: null,
+    courseName: null,
+    courseCredits: null,
+    courseTutorId: null,
+    courseTutorName: null,
+    courseTutorEmail: null
+  };
+
+  public triggerCourseModal: string = 'none';
+  constructor() { }
 }

@@ -1,11 +1,15 @@
-.fixed{
-    position: fixed;
-    top: 0;
-    width: 100%
+.fixed {
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 .blurred {
-    filter: blur(1.5px);
-    -webkit-filter: blur(1.5px);
-    border: none;
-    border-style: none !important;
-  }
+  filter: blur(1.5px);
+  -webkit-filter: blur(1.5px);
+  border: none;
+  border-style: none !important;
+}
+
+.pointer {
+  cursor: pointer;
+}

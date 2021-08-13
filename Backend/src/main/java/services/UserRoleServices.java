@@ -51,7 +51,7 @@ public class UserRoleServices {
 		}
 		
 		UserRole userRole = UserRole.Builder.newInstance().setCourses(courses).setNotifications(notifications)
-				.setUpdates(updates).Build();
+				.setUpdates(updates).setUserId(id).Build();
 
 		return ResponseEntity.status(HttpStatus.CREATED).body(userRole);
 	}

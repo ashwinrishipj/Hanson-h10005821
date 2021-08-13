@@ -1,3 +1,85 @@
+<div class="modal" data-aos="zoom-in" aos-duration="3000" tabindex="-1" [ngStyle]="{'display': modalDisplay }">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Your Profile:</h5>
+                <button type="button" (click)="dismissModal()" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="row g-3 needs-validation" novalidate>
+                    <div class="col-md-6">
+                        <label for="inputEmail4" class="form-label">email</label>
+                        <input type="email" class="form-control" aria-required="true" required id="inputEmail4"
+                            [(ngModel)]="updateProfile.userName"
+                            (change)="onChangeValue('userName',$event.target.value)">
+                    </div>
+                    <div class="col-12">
+                        <label for="inputAddress" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="inputAddress" required aria-required="true"
+                            [(ngModel)]="updateProfile.userAddress"
+                            (change)="onChangeValue('userAddress',$event.target.value)" placeholder="1234 Main St">
+                    </div>
+                    <div class="col-12">
+                        <label for="inputAddress2" class="form-label">Address 2</label>
+                        <input type="text" class="form-control" required aria-required="true" id="inputAddress2"
+                            [(ngModel)]="updateProfile.userAddress"
+                            (change)="onChangeValue('userAddress',$event.target.value)"
+                            placeholder="Apartment, studio, or floor">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="validationCustom03" class="form-label">City</label>
+                        <input [(ngModel)]="updateProfile.userCity" type="text" class="form-control"
+                            id="validationCustom03" (change)="onChangeValue('userCity',$event.target.value)" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid city.
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="validationCustom04" class="form-label">State</label>
+                        <input [(ngModel)]="updateProfile.userState" type="text" class="form-control"
+                            id="validationCustom03" (change)="onChangeValue('userState',$event.target.value)" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid State.
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="validationCustom05" class="form-label">Zip</label>
+                        <input type="text" class="form-control" id="validationCustom05"
+                            (change)="onChangeValue('userZipCode',$event.target.value)"
+                            [(ngModel)]="updateProfile.userZipCode" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid zip.
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                            <label class="form-check-label" for="invalidCheck">
+                                Agree to terms and conditions
+                            </label>
+                            <div class="invalid-feedback">
+                                You must agree before submitting.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <button type="submit" (click)="updateUserProfile()" class="btn btn-primary"
+                            aria-required="true">Submit</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" (click)="dismissModal()" class="btn btn-secondary"
+                    data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="container emp-profile">
     <form method="post">
         <div class="row">
@@ -23,7 +105,8 @@
                 </div>
             </div>
             <div class="col-md-2">
-                <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" />
+                <button type="submit" class="profile-edit-btn" name="btnAddMore" (click)="profileEdit()">Edit Profile
+                </button>
             </div>
         </div>
         <div class="row">
@@ -47,7 +130,7 @@
                         <label>User Id</label>
                     </div>
                     <div class="col-md-6">
-                        <p>Kshiti123</p>
+                        <p>{{this.userData[0].hanson_userDetails_email}}</p>
                     </div>
                 </div>
                 <div class="row">
@@ -55,7 +138,7 @@
                         <label>Name</label>
                     </div>
                     <div class="col-md-6">
-                        <p>Kshiti Ghelani</p>
+                        <p>{{this.userData[0].hanson_userDetails_name}}</p>
                     </div>
                 </div>
                 <div class="row">
@@ -63,7 +146,7 @@
                         <label>Email</label>
                     </div>
                     <div class="col-md-6">
-                        <p>kshitighelani@gmail.com</p>
+                        <p>{{this.userData[0].hanson_userDetails_email}}</p>
                     </div>
                 </div>
                 <div class="row">
@@ -71,7 +154,7 @@
                         <label>Phone</label>
                     </div>
                     <div class="col-md-6">
-                        <p>123 456 7890</p>
+                        <p>{{this.userData[0].phone_number}}</p>
                     </div>
                 </div>
                 <div class="row">
@@ -79,7 +162,7 @@
                         <label>Profession</label>
                     </div>
                     <div class="col-md-6">
-                        <p>Web Developer and Designer</p>
+                        <p>{{this.userData[0].profession}}</p>
                     </div>
                 </div>
 
@@ -88,7 +171,7 @@
                         <label>Experience</label>
                     </div>
                     <div class="col-md-6">
-                        <p>Expert</p>
+                        <p>{{this.userData[0].experience}}</p>
                     </div>
                 </div>
                 <div class="row">
@@ -104,7 +187,7 @@
                         <label>Total Projects</label>
                     </div>
                     <div class="col-md-6">
-                        <p>230</p>
+                        <p>{{this.userData[0].total_project}}</p>
                     </div>
                 </div>
                 <div class="row">
@@ -112,7 +195,7 @@
                         <label>English Level</label>
                     </div>
                     <div class="col-md-6">
-                        <p>Expert</p>
+                        <p>{{this.userData[0].english_level}}</p>
                     </div>
                 </div>
                 <div class="row">
@@ -129,7 +212,6 @@
                         <p>Your detail description</p>
                     </div>
                 </div>
-
             </div>
         </div>
     </form>
